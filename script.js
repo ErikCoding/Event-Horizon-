@@ -1,7 +1,7 @@
 // Intersection Observer for scroll animations
 const observerOptions = {
   threshold: 0.1,
-  rootMargin: "0px 0px 300px 0px", // Triggers 300px before element enters viewport
+  rootMargin: "0px 0px 300px 0px",
 }
 
 const observer = new IntersectionObserver((entries) => {
@@ -24,33 +24,51 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   const portfolioScroll = document.querySelector(".portfolio-scroll")
-  let isScrolling = false
-  const scrollSpeed = 1
 
-  portfolioScroll.addEventListener("mouseenter", () => {
-    isScrolling = true
-    autoScroll()
-  })
+  const isMobile = window.innerWidth <= 768
 
-  portfolioScroll.addEventListener("mouseleave", () => {
-    isScrolling = false
-  })
+  if (!isMobile) {
+    // Desktop: Use CSS animation, pause on hover is handled by CSS
+    portfolioScroll.addEventListener("mouseenter", () => {
+      portfolioScroll.style.animationPlayState = "paused"
+    })
 
-  function autoScroll() {
-    if (!isScrolling) return
+    portfolioScroll.addEventListener("mouseleave", () => {
+      portfolioScroll.style.animationPlayState = "running"
+    })
+  } else {
+    let isDown = false
+    let startX
+    let scrollLeft
 
-    portfolioScroll.scrollLeft += scrollSpeed
+    portfolioScroll.addEventListener("touchstart", (e) => {
+      isDown = true
+      startX = e.touches[0].pageX - portfolioScroll.offsetLeft
+      scrollLeft = portfolioScroll.scrollLeft
+    })
 
-    // Get the width of a single card plus gap
-    const cardWidth = 430 // 400px card + 30px gap
-    const totalWidth = cardWidth * 4 // 4 original cards
+    portfolioScroll.addEventListener("touchend", () => {
+      isDown = false
+    })
 
-    // When we've scrolled past the first set of cards, reset to beginning
-    if (portfolioScroll.scrollLeft >= totalWidth) {
-      portfolioScroll.scrollLeft = 0
-    }
+    portfolioScroll.addEventListener("touchmove", (e) => {
+      if (!isDown) return
+      e.preventDefault()
+      const x = e.touches[0].pageX - portfolioScroll.offsetLeft
+      const walk = (x - startX) * 2
+      portfolioScroll.scrollLeft = scrollLeft - walk
+    })
 
-    requestAnimationFrame(autoScroll)
+    portfolioScroll.addEventListener(
+      "scroll",
+      () => {
+        const indicator = document.querySelector("#portfolio::after")
+        if (indicator) {
+          portfolioScroll.classList.add("scrolled")
+        }
+      },
+      { once: true },
+    )
   }
 
   const themeToggle = document.getElementById("themeToggle")

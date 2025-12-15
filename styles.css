@@ -15,7 +15,6 @@
   --text-secondary: #a0a0b0;
 }
 
-/* Added light theme variables */
 [data-theme="light"] {
   --dark-bg: #f5f5f7;
   --dark-card: rgba(255, 255, 255, 0.8);
@@ -32,7 +31,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Added theme toggle button styles */
 .theme-toggle {
   position: fixed;
   top: 30px;
@@ -62,7 +60,6 @@ body {
   transition: transform 0.3s ease;
 }
 
-/* Animated Background */
 .bg-gradient {
   position: fixed;
   top: 0;
@@ -91,7 +88,6 @@ body {
   }
 }
 
-/* Hero Section */
 .hero {
   height: 100vh;
   display: flex;
@@ -166,13 +162,13 @@ body {
 }
 
 @keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
   from {
     opacity: 0;
     transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -261,7 +257,6 @@ body {
   }
 }
 
-/* Section Styling */
 section {
   padding: 120px 8%;
   position: relative;
@@ -297,7 +292,6 @@ section {
   background-clip: text;
 }
 
-/* Services Grid */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -355,12 +349,15 @@ section {
 .service-card:nth-child(1) .service-icon {
   color: var(--neon-purple);
 }
+
 .service-card:nth-child(2) .service-icon {
   color: var(--neon-blue);
 }
+
 .service-card:nth-child(3) .service-icon {
   color: var(--neon-magenta);
 }
+
 .service-card:nth-child(4) .service-icon {
   color: var(--neon-cyan);
 }
@@ -377,7 +374,6 @@ section {
   position: relative;
 }
 
-/* Timeline */
 .timeline {
   max-width: 1200px;
   margin: 80px auto;
@@ -478,15 +474,31 @@ section {
   color: var(--text-secondary);
 }
 
-/* Portfolio Gallery */
-/* Improved infinite scroll styles */
+#portfolio {
+  overflow: hidden;
+}
+
 .portfolio-scroll {
   display: flex;
   gap: 30px;
-  overflow-x: auto; /* Changed from hidden to auto for mobile scrolling */
   padding: 40px 0;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch; /* Added smooth scrolling on iOS */
+  animation: infiniteScroll 40s linear infinite;
+  will-change: transform;
+}
+
+@keyframes infiniteScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-430px * 4));
+  }
+}
+
+@media (min-width: 769px) {
+  .portfolio-scroll:hover {
+    animation-play-state: paused;
+  }
 }
 
 .portfolio-scroll::-webkit-scrollbar {
@@ -494,24 +506,60 @@ section {
 }
 
 .portfolio-card {
-  min-width: 400px;
-  height: 500px;
+  min-width: 380px;
+  width: 380px; /* Unified card dimensions for clean, consistent layout */
+  height: 480px;
   background: var(--dark-card);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(168, 85, 247, 0.2);
-  border-radius: 20px;
+  border-radius: 24px;
   overflow: hidden;
   position: relative;
   cursor: pointer;
-  transition: all 0.4s ease;
-  opacity: 0;
-  transform: scale(0.9);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  scroll-snap-align: center;
 }
 
-.portfolio-card.visible {
-  opacity: 1;
-  transform: scale(1);
+.portfolio-card:nth-child(1) {
+  animation: cardFadeIn 0.8s ease forwards 0.1s;
+}
+
+.portfolio-card:nth-child(2) {
+  animation: cardFadeIn 0.8s ease forwards 0.2s;
+}
+
+.portfolio-card:nth-child(3) {
+  animation: cardFadeIn 0.8s ease forwards 0.3s;
+}
+
+.portfolio-card:nth-child(4) {
+  animation: cardFadeIn 0.8s ease forwards 0.4s;
+}
+
+.portfolio-card:nth-child(5) {
+  animation: cardFadeIn 0.8s ease forwards 0.5s;
+}
+
+.portfolio-card:nth-child(6) {
+  animation: cardFadeIn 0.8s ease forwards 0.6s;
+}
+
+.portfolio-card:nth-child(7) {
+  animation: cardFadeIn 0.8s ease forwards 0.7s;
+}
+
+.portfolio-card:nth-child(8) {
+  animation: cardFadeIn 0.8s ease forwards 0.8s;
+}
+
+@keyframes cardFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .portfolio-card::before {
@@ -521,9 +569,14 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(59, 130, 246, 0.3));
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.4) 0%,
+    rgba(59, 130, 246, 0.4) 50%,
+    rgba(236, 72, 153, 0.4) 100%
+  );
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1;
 }
 
@@ -532,19 +585,50 @@ section {
 }
 
 .portfolio-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 20px 60px rgba(168, 85, 247, 0.5);
+  transform: translateY(-15px) scale(1.05);
+  border-color: var(--neon-purple);
+  box-shadow: 0 30px 60px rgba(168, 85, 247, 0.4), 0 0 80px rgba(168, 85, 247, 0.2);
 }
 
 .portfolio-image {
   width: 100%;
-  height: 60%;
+  height: 65%;
   background: linear-gradient(135deg, #1a1a2e, #16213e);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 4rem;
+  font-size: 4.5rem;
   position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-image::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, rgba(59, 130, 246, 0.1) 50%, transparent 70%);
+  animation: rotateGradient 10s linear infinite;
+}
+
+@keyframes rotateGradient {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.portfolio-card:hover .portfolio-image {
+  transform: scale(1.1);
+}
+
+.portfolio-card:hover .portfolio-image::before {
+  animation-duration: 5s;
 }
 
 [data-theme="light"] .portfolio-image {
@@ -555,18 +639,39 @@ section {
   padding: 30px;
   position: relative;
   z-index: 2;
+  transform: translateY(0);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-card:hover .portfolio-info {
+  transform: translateY(-10px);
 }
 
 .portfolio-info h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--text-primary), var(--neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.3s ease;
+}
+
+.portfolio-card:hover .portfolio-info h3 {
+  letter-spacing: 0.5px;
 }
 
 .portfolio-info p {
   color: var(--text-secondary);
+  line-height: 1.7;
+  transition: color 0.3s ease;
 }
 
-/* Testimonials */
+.portfolio-card:hover .portfolio-info p {
+  color: var(--text-primary);
+}
+
 .testimonials {
   background: linear-gradient(135deg, rgba(168, 85, 247, 0.05), rgba(59, 130, 246, 0.05));
 }
@@ -607,7 +712,6 @@ section {
   margin-top: 5px;
 }
 
-/* Contact Form */
 .contact-form {
   max-width: 700px;
   margin: 60px auto;
@@ -749,7 +853,6 @@ section {
   z-index: 1;
 }
 
-/* Footer */
 footer {
   text-align: center;
   padding: 60px 8%;
@@ -767,7 +870,6 @@ footer {
   margin-bottom: 20px;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .hero {
     padding: 0 5%;
@@ -804,32 +906,71 @@ footer {
     display: none;
   }
 
-  /* Fixed portfolio cards for mobile - made them narrower and adjusted height */
   .portfolio-scroll {
+    animation: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     gap: 20px;
-    padding: 20px 0;
+    padding: 20px 5%;
   }
 
   .portfolio-card {
-    min-width: 280px; /* Narrower cards for mobile screens */
-    height: 400px; /* Reduced height for better mobile display */
+    min-width: 300px;
+    width: 300px; /* Unified mobile card dimensions */
+    height: 420px;
   }
 
   .portfolio-image {
-    height: 50%; /* Adjusted image area proportion */
-    font-size: 3rem; /* Smaller icon on mobile */
+    height: 60%;
+    font-size: 3.5rem;
   }
 
   .portfolio-info {
-    padding: 20px; /* Reduced padding for mobile */
+    padding: 24px;
   }
 
   .portfolio-info h3 {
-    font-size: 1.2rem; /* Smaller heading on mobile */
+    font-size: 1.3rem;
   }
 
   .portfolio-info p {
-    font-size: 0.9rem; /* Smaller text on mobile */
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .portfolio-card:active {
+    transform: scale(0.98);
+  }
+
+  #portfolio {
+    position: relative;
+  }
+
+  #portfolio::after {
+    content: "→";
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: var(--neon-purple);
+    opacity: 0.6;
+    animation: slideHint 2s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes slideHint {
+    0%,
+    100% {
+      transform: translateY(-50%) translateX(0);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translateY(-50%) translateX(10px);
+      opacity: 0.3;
+    }
   }
 
   .contact-form {
