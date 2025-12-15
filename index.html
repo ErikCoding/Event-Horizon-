@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVENT HORIZON - Solidna dawka radości</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-gradient"></div>
+
+    <!-- Added theme toggle button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="theme-icon">☀️</span>
+    </button>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">EVENT HORIZON</div>
+            <h1 class="hero-title">Tworzymy wydarzenia, których się nie zapomina!</h1>
+            <p class="hero-description">
+                Organizacja eventów i atrakcji na imprezy rodzinne, firmowe i plenerowe.
+                Dbamy o szczegóły, atmosferę i sprawną realizację tak, aby każdy mógł cieszyć się wydarzeniem.
+            </p>
+            <a href="#contact" class="hero-cta">Zróbmy coś wyjątkowego</a>
+        </div>
+        <div class="scroll-indicator" onclick="document.querySelector('#services').scrollIntoView({behavior: 'smooth'})">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-header">
+            <div class="section-subtitle">Co robimy</div>
+            <h2 class="section-title">Specjalizujemy się w organizacji <br> wydarzeń, które łączą ludzi</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🎈</div>
+                <h3>Eventy rodzinne i okolicznościowe</h3>
+                <p>Urodziny, komunie i wydarzenia rodzinne z atrakcjami, które cieszą zarówno dzieci, jak i dorosłych.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏢</div>
+                <h3>Eventy firmowe</h3>
+                <p>Imprezy integracyjne, pikniki firmowe i wydarzenia promocyjne realizowane w przyjaznej, profesjonalnej atmosferze.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎉</div>
+                <h3>Festyny i wydarzenia lokalne</h3>
+                <p>Imprezy plenerowe, wydarzenia miejskie i szkolne z bezpieczną i sprawdzoną oprawą.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🌿</div>
+                <h3>Eventy plenerowe</h3>
+                <p>Pikniki, wydarzenia sezonowe i imprezy outdoorowe dopasowane do miejsca i charakteru wydarzenia.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline">
+        <div class="section-header">
+            <div class="section-subtitle">Proces</div>
+            <h2 class="section-title">Jak wygląda współpraca z EVENT HORIZON</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-number">01</div>
+                    <h3>Rozmowa i potrzeby</h3>
+                    <p>Poznajemy charakter wydarzenia, liczbę uczestników i oczekiwania organizatora.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-number">02</div>
+                    <h3>Dobór atrakcji</h3>
+                    <p>Proponujemy rozwiązania dopasowane do wieku uczestników, miejsca i budżetu.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-number">03</div>
+                    <h3>Przygotowanie eventu</h3>
+                    <p>Zajmujemy się logistyką, sprzętem i organizacją atrakcji.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-number">04</div>
+                    <h3>Realizacja wydarzenia</h3>
+                    <p>Czuwamy nad przebiegiem imprezy, dbając o bezpieczeństwo i dobrą atmosferę.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-number">05</div>
+                    <h3>Zakończenie i kontakt</h3>
+                    <p>Po wydarzeniu jesteśmy dostępni na przyszłe realizacje i współpracę.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <!-- Duplicated portfolio cards for infinite scroll effect -->
+    <section id="portfolio">
+        <div class="section-header">
+            <div class="section-subtitle">Realizacje</div>
+            <h2 class="section-title">Wybrane typy realizowanych wydarzeń</h2>
+        </div>
+        <div class="portfolio-scroll">
+            <div class="portfolio-card">
+                <div class="portfolio-image">🎪</div>
+                <div class="portfolio-info">
+                    <h3>Festyny rodzinne</h3>
+                    <p>Wydarzenia plenerowe z atrakcjami dla dzieci i strefami rekreacji.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-image">🎂</div>
+                <div class="portfolio-info">
+                    <h3>Urodziny i komunie</h3>
+                    <p>Imprezy okolicznościowe z dmuchańcami, animacjami i fotobudkami.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-image">🏫</div>
+                <div class="portfolio-info">
+                    <h3>Eventy szkolne i gminne</h3>
+                    <p>Bezpieczne i sprawdzone atrakcje na wydarzenia lokalne.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-image">🏢</div>
+                <div class="portfolio-info">
+                    <h3>Pikniki firmowe</h3>
+                    <p>Luźna forma integracji w przyjaznej atmosferze.</p>
+                </div>
+            </div>
+            <!-- Duplicated cards for seamless loop -->
+            <div class="portfolio-card">
+                <div class="portfolio-image">🎪</div>
+                <div class="portfolio-info">
+                    <h3>Festyny rodzinne</h3>
+                    <p>Wydarzenia plenerowe z atrakcjami dla dzieci i strefami rekreacji.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-image">🎂</div>
+                <div class="portfolio-info">
+                    <h3>Urodziny i komunie</h3>
+                    <p>Imprezy okolicznościowe z dmuchańcami, animacjami i fotobudkami.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-image">🏫</div>
+                <div class="portfolio-info">
+                    <h3>Eventy szkolne i gminne</h3>
+                    <p>Bezpieczne i sprawdzone atrakcje na wydarzenia lokalne.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-image">🏢</div>
+                <div class="portfolio-info">
+                    <h3>Pikniki firmowe</h3>
+                    <p>Luźna forma integracji w przyjaznej atmosferze.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="section-header">
+            <div class="section-subtitle">Opinie</div>
+            <h2 class="section-title">Co mówią nasi klienci</h2>
+        </div>
+        <div class="testimonial-slider">
+            <div class="testimonial-content">
+                <p class="testimonial-text">
+                    "Świetna organizacja i bardzo dobry kontakt. Dzieci były zachwycone, a my spokojni o przebieg imprezy."
+                </p>
+                <div class="testimonial-author">Anna Kowalska</div>
+                <div class="testimonial-role">CEO, TechVision</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <div class="section-subtitle">Kontakt</div>
+            <h2 class="section-title">Porozmawiajmy o Twoim wydarzeniu</h2>
+        </div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label class="form-label" for="name">Imię i nazwisko</label>
+                <input type="text" id="name" class="form-input" placeholder="Jan Kowalski" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input type="email" id="email" class="form-input" placeholder="jan@example.com" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="phone">Telefon</label>
+                <input type="tel" id="phone" class="form-input" placeholder="+48 123 456 789">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="message">Opisz swój event</label>
+                <textarea id="message" class="form-textarea" placeholder="Opowiedz nam o swoich planach i oczekiwaniach..." required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">
+                <span>Wyślij wiadomość</span>
+            </button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">EVENT HORIZON</div>
+        <p>&copy; 2025 EVENT HORIZON <br> Lokalna organizacja eventów i atrakcji <br> Made by ErikCoding</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
