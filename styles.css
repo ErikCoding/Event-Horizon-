@@ -483,9 +483,10 @@ section {
 .portfolio-scroll {
   display: flex;
   gap: 30px;
-  overflow-x: hidden;
+  overflow-x: auto; /* Changed from hidden to auto for mobile scrolling */
   padding: 40px 0;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; /* Added smooth scrolling on iOS */
 }
 
 .portfolio-scroll::-webkit-scrollbar {
@@ -803,8 +804,32 @@ footer {
     display: none;
   }
 
+  /* Fixed portfolio cards for mobile - made them narrower and adjusted height */
+  .portfolio-scroll {
+    gap: 20px;
+    padding: 20px 0;
+  }
+
   .portfolio-card {
-    min-width: 300px;
+    min-width: 280px; /* Narrower cards for mobile screens */
+    height: 400px; /* Reduced height for better mobile display */
+  }
+
+  .portfolio-image {
+    height: 50%; /* Adjusted image area proportion */
+    font-size: 3rem; /* Smaller icon on mobile */
+  }
+
+  .portfolio-info {
+    padding: 20px; /* Reduced padding for mobile */
+  }
+
+  .portfolio-info h3 {
+    font-size: 1.2rem; /* Smaller heading on mobile */
+  }
+
+  .portfolio-info p {
+    font-size: 0.9rem; /* Smaller text on mobile */
   }
 
   .contact-form {

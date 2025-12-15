@@ -1,7 +1,7 @@
 // Intersection Observer for scroll animations
 const observerOptions = {
   threshold: 0.1,
-  rootMargin: "0px 0px -100px 0px",
+  rootMargin: "0px 0px 300px 0px", // Triggers 300px before element enters viewport
 }
 
 const observer = new IntersectionObserver((entries) => {
